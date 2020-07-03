@@ -1,26 +1,19 @@
 	.file	"ab.cpp"
-	.def	__main;	.scl	2;	.type	32;	.endef
+	.def	___main;	.scl	2;	.type	32;	.endef
 	.text
-	.globl	main
-	.def	main;	.scl	2;	.type	32;	.endef
-	.seh_proc	main
-main:
-.LFB0:
-	pushq	%rbp
-	.seh_pushreg	%rbp
-	movq	%rsp, %rbp
-	.seh_setframe	%rbp, 0
-	subq	$48, %rsp
-	.seh_stackalloc	48
-	.seh_endprologue
-	call	__main
-	movl	-4(%rbp), %edx
-	movl	-8(%rbp), %eax
+	.globl	_main
+	.def	_main;	.scl	2;	.type	32;	.endef
+_main:
+	pushl	%ebp
+	movl	%esp, %ebp
+	andl	$-16, %esp
+	subl	$16, %esp
+	call	___main
+	movl	12(%esp), %edx
+	movl	8(%esp), %eax
 	addl	%edx, %eax
-	movl	%eax, -12(%rbp)
+	movl	%eax, 4(%esp)
 	movl	$0, %eax
-	addq	$48, %rsp
-	popq	%rbp
+	leave
 	ret
-	.seh_endproc
 	.ident	"GCC: (tdm64-1) 4.9.2"

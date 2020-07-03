@@ -1,3 +1,3 @@
-gcc -S %1.cpp
-gcc -c %1.s
-gcc %1.o -o %1
+gcc -m32 -S %1.cpp
+gcc -m32 -c %1.s
+gcc -m32 %1.o -o %1
